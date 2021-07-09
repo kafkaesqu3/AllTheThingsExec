@@ -17,7 +17,7 @@ Something like this, your specifics may vary
   {
     // Code size       18 (0x12)
     .maxstack  1
-	   .export[1] 
+    .export[1] 
     .locals init (bool V_0)
     IL_0000:  nop
     IL_0001:  ldstr      "DllRegisterServer"
