@@ -2,22 +2,21 @@
 Executes Blended Managed/Unmanged Exports
 
 
-# Compile AllTheThings.cs
+## Compile AllTheThings.cs
 
+## You need the .net SDK for ildasm
 
-# You need the .net SDK for ildasm
+`C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /platform:AnyCPU /target:library .\AllTheThings.cs`
+ 
+## Add your export directives
 
-`C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ildasm.exe /out:AllTheThings.il .\AllTheThings.dll`
-
-# Add your export directives
-
-# Re-assemble
+## Re-assemble
 `C:\Windows\Microsoft.NET\Framework\v4.0.30319\ilasm.exe AllTheThings.il /DLL /output=AllTheThings.dll`
 
-# You can have weird consequences of x64 x86 
+## You can have weird consequences of x64 x86 
 
 
-# Create a .bat file like this and test all the various iterations.
+## Create a .bat file like this and test all the various iterations.
 
 ```
 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=false /U AllTheThings.dll
