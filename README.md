@@ -3,12 +3,36 @@ Executes Blended Managed/Unmanged Exports
 
 
 ## Compile AllTheThings.cs
-
-## You need the .net SDK for ildasm
-
 `C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /platform:AnyCPU /target:library .\AllTheThings.cs`
  
+
+## You need the .net SDK for ildasm
+`C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ildasm.exe /out:AllTheThings.il .\AllTheThings.dll`
+
 ## Add your export directives
+
+Something like this, your specifics may vary
+```
+ .method public hidebysig static bool  DllRegisterServer() cil managed
+  {
+    // Code size       18 (0x12)
+    .maxstack  1
+	   .export[1] 
+    .locals init (bool V_0)
+    IL_0000:  nop
+    IL_0001:  ldstr      "DllRegisterServer"
+    IL_0006:  call       void Thing0::ExecParam(string)
+    IL_000b:  nop
+    IL_000c:  ldc.i4.1
+    IL_000d:  stloc.0
+    IL_000e:  br.s       IL_0010
+
+    IL_0010:  ldloc.0
+    IL_0011:  ret
+  } // end of method Exports::DllRegisterServer
+
+```
+
 
 ## Re-assemble
 `C:\Windows\Microsoft.NET\Framework\v4.0.30319\ilasm.exe AllTheThings.il /DLL /output=AllTheThings.dll`
